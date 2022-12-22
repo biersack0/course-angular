@@ -1,0 +1,5 @@
+<form (ngSubmit)="addCharacter()" style="background-color: royalblue;">
+    <input type="text" placeholder="name" name="name" [(ngModel)]="character.name">
+    <input type="text" placeholder="power" name="power" [(ngModel)]="character.power">
+    <button type="submit">Add</button>
+</form>

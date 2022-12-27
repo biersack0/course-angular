@@ -1,0 +1,39 @@
+<!-- <div class="col-12" *ngIf="country == undefined; else showCountry">
+    <div>Loading...</div>
+</div>
+<ng-template #showCountry>
+    <div class="row" *ngIf="country !== undefined">
+        <div class="col-md-5"> 
+            <div class="h3">Flag</div>
+            <div>{{country[0].flag!}}</div>
+        </div>
+        <div class="col-md-7">
+            <div class="h3">Information</div>
+            <div><strong class="h4">Capital: </strong> {{country[0]!.capital}}</div> -->
+           <!--  <div><strong class="h4">Region: </strong> {{country[0].region}}</div>
+            <div><strong class="h4">Population: </strong> {{country[0].population | number}}</div> 
+        </div>
+    </div>
+</ng-template> -->
+
+<div *ngIf="country.length == 0; else show;">
+<div>cargando</div>
+</div>
+<ng-template #show>
+    <div class="row" *ngIf="country !== undefined">
+        <div class="col-md-5"> 
+            <div class="h3">Flag</div>
+            <div class="h1">{{country[0].flag}}</div>
+        </div>
+        <div class="col-md-7">
+            <div class="h3">Information</div>
+            <div><strong class="h4">Capital: </strong> {{country[0].capital}}</div>
+            <div><strong class="h4">Region: </strong> {{country[0].region}}</div>
+            <div><strong class="h4">Population: </strong> {{country[0].population | number}}</div> 
+        </div>
+        <div class="col-12">
+            <div class="h3">Translations</div>
+            <span class="badge bg-primary m-1 p-1" *ngFor="let translation of country[0].translations | keyvalue">{{translation.value.official}}</span>
+        </div>
+    </div>
+</ng-template>

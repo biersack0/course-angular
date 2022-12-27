@@ -46,16 +46,34 @@
             type="search"
             class="form-control dropdown-toggle"
             placeholder="Search..."
+            id="top-search"
             autocomplete="off"
             name="search"
+            (ngModelChange)="suggestion.next($event)"
             [(ngModel)]="searchBox" />
-          <!-- (keyup.enter)="search()" #searchBox -->
           <span class="mdi mdi-magnify search-icon"></span>
           <button class="input-group-text btn btn-primary" type="submit">
             Search
           </button>
         </div>
       </form>
+      <!-- [ngClass]="{'d-none': suggestionCountries.length==0}" -->
+      <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
+          <a class="dropdown-item notify-item" *ngIf="suggestionNotFound;else showSuggestion">
+            <span>Country not found.</span>
+          </a>
+
+          <ng-template #showSuggestion>
+            <a style="cursor: pointer;" (click)="search()" class="dropdown-item notify-item">
+              <i class="uil-map font-16 me-1"></i>
+              <span>Search "{{searchBox}}"</span>
+            </a>
+            <a [routerLink]="[ '/country', suggestionCountry.cca2 ]" style="cursor: pointer;" class="dropdown-item notify-item" *ngFor="let suggestionCountry of suggestionCountries">
+                <i class="uil-map font-16 me-1"></i>
+                <span>{{suggestionCountry.name.common}}</span>
+            </a>
+          </ng-template>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="leftside-menu">
-  <span class="logo h2 text-white">GIF app</span>
+  <span class="logo h3 text-white">Countries app</span>
 
   <!-- Sidebar Hover Menu Toggle Button -->
   <button
@@ -15,12 +15,12 @@
   <div class="h-100" id="leftside-menu-container" data-simplebar>
     <!--- Sidemenu -->
     <ul class="side-nav">
-      <li class="side-nav-title side-nav-item">Historial</li>
+      <li class="side-nav-title side-nav-item">Search</li>
 
-      <li class="side-nav-item" *ngFor="let history of historial">
-        <a class="side-nav-link" (click)="search(history)">
-          <i class="uil-file"></i>
-          <span> {{ history | titlecase }} </span>
+      <li class="side-nav-item" *ngFor="let param of searchBy; let i = index" routerLink="{{(i == 0)? '' : param}}">
+        <a class="side-nav-link" routerLinkActive="text-danger" [routerLinkActiveOptions]="{exact: true}">
+          <i class="uil-map"></i>
+          <span> By {{param}} </span>
         </a>
       </li>
     </ul>

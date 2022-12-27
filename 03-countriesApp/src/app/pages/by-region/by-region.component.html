@@ -1,0 +1,7 @@
+
+<div class="col-12">
+    <button class="btn btn-outline-primary mx-2" [ngClass]="{'active': regionActive == region}" (click)="getByRegion(region)" *ngFor="let region of regions">{{region}}</button>
+</div>
+<div class="col-12 my-3">
+    <app-table></app-table>
+</div>
